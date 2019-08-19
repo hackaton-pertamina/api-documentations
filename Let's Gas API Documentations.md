@@ -92,3 +92,62 @@ Params:
 }
 ```
 
+#### Get Gas Station by Id
+
+##### Request
+
+Url:
+
+- /gas-stations/by-id/{gas_station_id}
+
+Method:
+
+- GET
+
+Params:
+
+- none
+
+##### Response
+
+```json
+{
+    "data": {
+        "id": 1,
+        "address": "Jalan Limo Kebayoran Lama, Grogol Utara, Jakarta Selatan, 12220",
+        "photo_url": "https://somebucket.com/ae231cb.png",
+        "lat": -6.241,
+        "lng": 121.19238189,
+        "distance": "1.5",
+        "open_at": "08:00",
+        "closed_at": "21:00",
+        "is_open": true,
+        "name": "31.143.01",
+        "facilities": [
+            {
+                "id": 33,
+                "gas_station_id": 1,
+                "name": "Toilet",
+                "icon": "https://somebucket.com/ce811fe.png",
+                "is_available": true,
+            },
+        ],
+        "products": [
+            {
+                "id": 120,
+                "gas_station_id": 1,
+                "name": "premium",
+            },
+        ],
+        "visitors": {
+            "id": 1232,
+            "gas_station_id": 1,
+            "count": 12,
+            "is_full": false,
+            "wait_duration_minutes": 15.23333,
+            "updated_at": "2019-08-19 09:31:11",
+        },
+    },
+}
+```
+
