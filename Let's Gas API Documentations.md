@@ -92,6 +92,8 @@ Params:
 }
 ```
 
+
+
 #### Get Gas Station by Id
 
 ##### Request
@@ -148,6 +150,75 @@ Params:
             "updated_at": "2019-08-19 09:31:11",
         },
     },
+}
+```
+
+## 2. Orders
+
+Base URL: /orders/
+
+#### Histories
+
+##### Request
+
+Url:
+
+- /orders/histories/
+
+Method:
+
+- GET
+
+Params:
+
+- none
+
+##### Response
+
+```json
+{
+    "next": "/orders/histories/&page=1",
+    "prev": null,
+    "total_page": 2,
+    "total_item": 11,
+    "data": [{
+        "id": 1,
+        "type": "SUBSCRIPTION",
+        "code": "#SB340LM1",
+        "subscriptions": {
+            "id": 1,
+            "name": "Subscription Pertralite 30L",
+            "quantity": 30.0,
+            "duration_in_days": 30,
+            "price": 220000,
+        },
+        "product": {
+            "id": 2,
+            "name": "pertralite",
+        },
+        "gas_station": {
+            "id": 1,
+            "name": "31.143.01",
+        },
+        "created_at": "2019-08-19 11:02:22",
+    },
+    {
+        "id": 1,
+        "type": "PETROL",
+        "code": "#PS340LM1",
+        "subscriptions": null,
+        "product": {
+            "id": 2,
+            "name": "pertralite",
+            "price": 7680,
+        },
+        "quantity": 3.13,
+        "gas_station": {
+            "id": 1,
+            "name": "31.143.01",
+        },
+        "created_at": "2019-08-19 11:02:22",
+    }],
 }
 ```
 
