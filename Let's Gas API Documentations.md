@@ -47,7 +47,11 @@ Params:
 
 ```json
 {
-    data: [
+    "next": "/gas-stations/nearest/?lat=-6.23301&lng=121.18123&page=2",
+    "prev": null,
+    "total_page": 2,
+    "total_item": 11,
+    "data": [
         {
             "id": 1,
             "address": "Jalan Limo Kebayoran Lama, Grogol Utara, Jakarta Selatan, 12220",
@@ -64,6 +68,7 @@ Params:
                     "id": 33,
                     "gas_station_id": 1,
                     "name": "Toilet",
+                    "icon": "https://somebucket.com/ce811fe.png",
                     "is_available": true,
                 },
             ],
