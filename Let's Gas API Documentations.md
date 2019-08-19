@@ -305,3 +305,54 @@ Params:
 }
 ```
 
+
+
+## 3. Bundles ( packets )
+
+Base URL: /bundles/
+
+#### Get all bundles
+
+##### Request
+
+Url:
+
+- /bundles/
+
+Method:
+
+- GET
+
+Params:
+
+- none
+
+##### Response
+
+```json
+{
+    "next": "/bundles/&page=2",
+    "prev": null,
+    "total_page": 2,
+    "total_item": 11,
+    "data": [
+        {
+            "id": 1,
+            "name": "Pertralite 30L",
+            "price": 220000,
+            "quantity": 30,
+            "duration_in_days": 30,
+            "products": {
+                "id": 120,
+                "gas_station_id": 1,
+                "name": "pertralite",
+                "price": 7860,
+            },
+        },
+    ],
+}
+```
+
+
+
+#### 
