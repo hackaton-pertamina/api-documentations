@@ -181,7 +181,72 @@ Params:
     "prev": null,
     "total_page": 2,
     "total_item": 11,
-    "data": [{
+    "data": [
+    	{
+            "id": 1,
+            "type": "SUBSCRIPTION",
+            "code": "#SB340LM1",
+            "total": 223000,
+            "admin_fee": 3000,
+            "subscriptions": {
+                "id": 1,
+                "name": "Subscription Pertralite 30L",
+                "quantity": 30.0,
+                "duration_in_days": 30,
+                "price": 220000,
+            },
+            "product": {
+                "id": 2,
+                "name": "pertralite",
+            },
+            "gas_station": {
+                "id": 1,
+                "name": "31.143.01",
+            },
+            "created_at": "2019-08-19 11:02:22",
+        },
+        {
+            "id": 2,
+            "type": "PETROL",
+            "code": "#PS340LM1",
+            "subscriptions": null,
+            "product": {
+                "id": 2,
+                "name": "pertralite",
+                "price": 7680,
+            },
+            "quantity": 3.13,
+            "gas_station": {
+                "id": 1,
+                "name": "31.143.01",
+            },
+            "created_at": "2019-08-19 11:02:22",
+        },
+    ],
+}
+```
+
+#### Get order details ( fetch admin cost, and base product prices )
+
+##### Request
+
+Url:
+
+- /orders/histories/{order_id}
+
+Method:
+
+- GET
+
+Params:
+
+- none
+
+##### Response ( Subscriptions)
+
+```json
+{
+    "data": {
         "id": 1,
         "type": "SUBSCRIPTION",
         "code": "#SB340LM1",
@@ -191,6 +256,12 @@ Params:
             "quantity": 30.0,
             "duration_in_days": 30,
             "price": 220000,
+        },
+        payment: {
+            id: 1,
+            "method": "LINK_AJA",
+            "total": 223000,
+            "admin_fee": 3000,
         },
         "product": {
             "id": 2,
@@ -202,8 +273,15 @@ Params:
         },
         "created_at": "2019-08-19 11:02:22",
     },
-    {
-        "id": 1,
+}
+```
+
+##### Response ( Petrol )
+
+```json
+{
+    "data": {
+        "id": 2,
         "type": "PETROL",
         "code": "#PS340LM1",
         "subscriptions": null,
@@ -212,13 +290,18 @@ Params:
             "name": "pertralite",
             "price": 7680,
         },
+        payment: {
+            id: 1,
+            "method": "LETS_GAS_SUB",
+            "total": 3.13,
+        },
         "quantity": 3.13,
         "gas_station": {
             "id": 1,
             "name": "31.143.01",
         },
         "created_at": "2019-08-19 11:02:22",
-    }],
+    },
 }
 ```
 
