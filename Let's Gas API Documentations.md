@@ -290,8 +290,8 @@ Params:
             "name": "pertralite",
             "price": 7680,
         },
-        payment: {
-            id: 1,
+        "payment": {
+            "id": 1,
             "method": "LETS_GAS_SUB",
             "total": 3.13,
         },
