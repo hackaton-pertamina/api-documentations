@@ -22,9 +22,9 @@ Version: 19082019.1
 
 
 
-## 1. Gas Stations
+## 1. Stations ( Workshops / Gas )
 
-Base URL: /gas-stations/
+Base URL: /stations/
 
 #### Get All Nearest Gas Stations
 
@@ -32,7 +32,7 @@ Base URL: /gas-stations/
 
 Url:
 
-- /gas-stations/nearest/
+- /stations/:type/
 
 Method:
 
@@ -40,14 +40,86 @@ Method:
 
 Params:
 
+- type: 
+  - GAS_STATION
+  - WORKSHOP
+
+Queries:
+
 - lat: float value of latitude
 - lng: float value of longitude
 
-##### Response
+##### Response ( GAS_STATION )
 
 ```json
 {
-    "next": "/gas-stations/nearest/?lat=-6.23301&lng=121.18123&page=2",
+    "next": "/stations/GAS_STATION/?lat=-6.23301&lng=121.18123&page=2",
+    "prev": null,
+    "total_page": 2,
+    "total_item": 11,
+    "data": [
+    {
+      "products": [
+        {
+          "_id": "5d5bb3725c39f75cc5c2a9be",
+          "name": "Pertamina Dex",
+          "price": 11700,
+          "is_deleted": false,
+          "created_at": "2019-08-20T08:46:42.681Z",
+          "updated_at": "2019-08-20T08:46:42.681Z",
+          "__v": 0
+        }
+      ],
+      "facilities": [
+        {
+          "_id": "5d5b134510d8500943d06336",
+          "name": "Toilet",
+          "icon": "wc",
+          "is_deleted": false,
+          "created_at": "2019-08-19T21:23:17.522Z",
+          "updated_at": "2019-08-19T21:23:17.522Z",
+          "__v": 0
+        },
+        {
+          "_id": "5d5b13f210d8500943d06339",
+          "name": "Restoran",
+          "icon": "restaurant",
+          "is_deleted": false,
+          "created_at": "2019-08-19T21:26:10.250Z",
+          "updated_at": "2019-08-19T21:26:10.250Z",
+          "__v": 0
+        },
+        {
+          "_id": "5d5b141e10d8500943d0633a",
+          "name": "Mini Market",
+          "icon": "local_convenience_store",
+          "is_deleted": false,
+          "created_at": "2019-08-19T21:26:54.228Z",
+          "updated_at": "2019-08-19T21:26:54.228Z",
+          "__v": 0
+        }
+      ],
+      "_id": "5d5bcbbdef60f8700ed45eab",
+      "name": "31.143.01",
+      "address": "Jalan Limo Kebayoran Lama, Grogol Utara, Jakarta Selatan, 12220",
+      "lat": -6.2280988,
+      "lng": 106.8060391,
+      "open_at": "08:00",
+      "closed_at": "21:30",
+      "created_at": "2019-08-20T10:30:21.114Z",
+      "updated_at": "2019-08-20T12:21:44.109Z",
+      "__v": 0,
+      "type": "GAS_STATION"
+    }
+  ]
+}
+```
+
+##### Response ( WORKSHOP )
+
+```json
+{
+    "next": "/stations/WORKSHOP/?lat=-6.23301&lng=121.18123&page=2",
     "prev": null,
     "total_page": 2,
     "total_item": 11,
@@ -56,17 +128,17 @@ Params:
             "id": 1,
             "address": "Jalan Limo Kebayoran Lama, Grogol Utara, Jakarta Selatan, 12220",
             "photo_url": "https://somebucket.com/ae231cb.png",
+            "type": "WORKSHOP",
             "lat": -6.241,
             "lng": 121.19238189,
             "distance": "1.5",
             "open_at": "08:00",
             "closed_at": "21:00",
             "is_open": true,
-            "name": "31.143.01",
+            "name": "Planet Ban",
             "facilities": [
                 {
                     "id": 33,
-                    "gas_station_id": 1,
                     "name": "Toilet",
                     "icon": "https://somebucket.com/ce811fe.png",
                     "is_available": true,
@@ -74,9 +146,9 @@ Params:
             ],
             "products": [
                 {
-                    "id": 120,
-                    "gas_station_id": 1,
-                    "name": "premium",
+                    "id": 1211,
+                    "name": "Service Kecil",
+                    "price": 35000,
                 },
             ],
             "visitors": {
@@ -100,7 +172,7 @@ Params:
 
 Url:
 
-- /gas-stations/by-id/{gas_station_id}
+- /stations/{gas_station_id}
 
 Method:
 
@@ -115,43 +187,128 @@ Params:
 ```json
 {
     "data": {
-        "id": 1,
-        "address": "Jalan Limo Kebayoran Lama, Grogol Utara, Jakarta Selatan, 12220",
-        "photo_url": "https://somebucket.com/ae231cb.png",
-        "lat": -6.241,
-        "lng": 121.19238189,
-        "distance": "1.5",
-        "open_at": "08:00",
-        "closed_at": "21:00",
-        "is_open": true,
-        "name": "31.143.01",
-        "facilities": [
-            {
-                "id": 33,
-                "gas_station_id": 1,
-                "name": "Toilet",
-                "icon": "https://somebucket.com/ce811fe.png",
-                "is_available": true,
-            },
-        ],
-        "products": [
-            {
-                "id": 120,
-                "gas_station_id": 1,
-                "name": "premium",
-            },
-        ],
-        "visitors": {
-            "id": 1232,
-            "gas_station_id": 1,
-            "count": 12,
-            "is_full": false,
-            "wait_duration_minutes": 15.23333,
-            "updated_at": "2019-08-19 09:31:11",
-        },
-    },
+    "products": [
+      {
+        "_id": "5d5bb3725c39f75cc5c2a9be",
+        "name": "Pertamina Dex",
+        "price": 11700,
+        "is_deleted": false,
+        "created_at": "2019-08-20T08:46:42.681Z",
+        "updated_at": "2019-08-20T08:46:42.681Z",
+        "__v": 0
+      }
+    ],
+    "facilities": [
+      {
+        "_id": "5d5b134510d8500943d06336",
+        "name": "Toilet",
+        "icon": "wc",
+        "is_deleted": false,
+        "created_at": "2019-08-19T21:23:17.522Z",
+        "updated_at": "2019-08-19T21:23:17.522Z",
+        "__v": 0
+      },
+      {
+        "_id": "5d5b13f210d8500943d06339",
+        "name": "Restoran",
+        "icon": "restaurant",
+        "is_deleted": false,
+        "created_at": "2019-08-19T21:26:10.250Z",
+        "updated_at": "2019-08-19T21:26:10.250Z",
+        "__v": 0
+      },
+      {
+        "_id": "5d5b141e10d8500943d0633a",
+        "name": "Mini Market",
+        "icon": "local_convenience_store",
+        "is_deleted": false,
+        "created_at": "2019-08-19T21:26:54.228Z",
+        "updated_at": "2019-08-19T21:26:54.228Z",
+        "__v": 0
+      }
+    ],
+    "_id": "5d5bcbbdef60f8700ed45eab",
+    "name": "31.143.01",
+    "address": "Jalan Limo Kebayoran Lama, Grogol Utara, Jakarta Selatan, 12220",
+    "lat": -6.2280988,
+    "lng": 106.8060391,
+    "open_at": "08:00",
+    "closed_at": "21:30",
+    "created_at": "2019-08-20T10:30:21.114Z",
+    "updated_at": "2019-08-20T12:20:09.285Z",
+    "__v": 0,
+    "type": "GAS_STATION"
+  }
 }
 ```
+
+##### Response ( WORKSHOP )
+
+```json
+{
+    "next": "/stations/1/?lat=-6.23301&lng=121.18123&page=2",
+    "prev": null,
+    "total_page": 2,
+    "total_item": 11,
+    "data":[
+    {
+      "products": [
+        {
+          "_id": "5d5bb3725c39f75cc5c2a9be",
+          "name": "Pertamina Dex",
+          "price": 11700,
+          "is_deleted": false,
+          "created_at": "2019-08-20T08:46:42.681Z",
+          "updated_at": "2019-08-20T08:46:42.681Z",
+          "__v": 0
+        }
+      ],
+      "facilities": [
+        {
+          "_id": "5d5b134510d8500943d06336",
+          "name": "Toilet",
+          "icon": "wc",
+          "is_deleted": false,
+          "created_at": "2019-08-19T21:23:17.522Z",
+          "updated_at": "2019-08-19T21:23:17.522Z",
+          "__v": 0
+        },
+        {
+          "_id": "5d5b13f210d8500943d06339",
+          "name": "Restoran",
+          "icon": "restaurant",
+          "is_deleted": false,
+          "created_at": "2019-08-19T21:26:10.250Z",
+          "updated_at": "2019-08-19T21:26:10.250Z",
+          "__v": 0
+        },
+        {
+          "_id": "5d5b141e10d8500943d0633a",
+          "name": "Mini Market",
+          "icon": "local_convenience_store",
+          "is_deleted": false,
+          "created_at": "2019-08-19T21:26:54.228Z",
+          "updated_at": "2019-08-19T21:26:54.228Z",
+          "__v": 0
+        }
+      ],
+      "_id": "5d5bdbfeda4c51108055c351",
+      "name": "31.143.01",
+      "address": "Jalan Selong Kebayoran Baru, Jakarta Selatan, 12220",
+      "lat": -6.2280988,
+      "lng": 106.8060391,
+      "open_at": "08:00",
+      "closed_at": "21:30",
+      "type": "WORKSHOP",
+      "created_at": "2019-08-20T11:39:42.993Z",
+      "updated_at": "2019-08-20T11:39:42.993Z",
+      "__v": 0
+    }
+  ]
+}
+```
+
+
 
 ## 2. Orders
 
@@ -232,7 +389,7 @@ Params:
 
 Url:
 
-- /orders/histories/{order_id}
+- /orders/{order_id}
 
 Method:
 
@@ -335,21 +492,28 @@ Params:
     "prev": null,
     "total_page": 2,
     "total_item": 11,
-    "data": [
-        {
-            "id": 1,
-            "name": "Pertralite 30L",
-            "price": 220000,
-            "quantity": 30,
-            "duration_in_days": 30,
-            "products": {
-                "id": 120,
-                "gas_station_id": 1,
-                "name": "pertralite",
-                "price": 7860,
-            },
-        },
-    ],
+    "data":[
+    {
+      "_id": "5d5bb6603a15895f0b6f1dff",
+      "name": "Pertamina Dex 30L",
+      "price": 220000,
+      "duration_in_days": 30,
+      "quantity": 30,
+      "is_deleted": false,
+      "products": {
+        "_id": "5d5bb3725c39f75cc5c2a9be",
+        "name": "Pertamina Dex",
+        "price": 11700,
+        "is_deleted": false,
+        "created_at": "2019-08-20T08:46:42.681Z",
+        "updated_at": "2019-08-20T08:46:42.681Z",
+        "__v": 0
+      },
+      "created_at": "2019-08-20T08:59:12.048Z",
+      "updated_at": "2019-08-20T08:59:12.048Z",
+      "__v": 0
+    }
+  ]
 }
 ```
 
